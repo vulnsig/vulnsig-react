@@ -1,0 +1,47 @@
+{
+  "name": "vulnsig-react",
+  "version": "1.0.0",
+  "description": "React component for VulnSig CVSS vulnerability glyphs",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "cvss",
+    "vulnerability",
+    "svg",
+    "glyph",
+    "security",
+    "vulnsig",
+    "react"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "dependencies": {
+    "vulnsig": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "react": "^19",
+    "tsup": "^8",
+    "typescript": "^5"
+  }
+}
