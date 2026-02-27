@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { renderGlyph } from "vulnsig";
 import type { CSSProperties } from "react";
 
@@ -19,7 +20,14 @@ export function VulnSig({
   className,
   style,
 }: VulnSigProps) {
-  const svg = renderGlyph({ vector, score, size });
+  const uid = useId();
+  let svg = renderGlyph({ vector, score, size });
+  // Make gradient IDs unique per instance to avoid collisions when
+  // multiple glyphs with the same vector appear on one page.
+  svg = svg
+    .replace(/id="(sg-[^"]+)"/g, `id="$1${uid}"`)
+    .replace(/url\(#(sg-[^)]+)\)/g, `url(#$1${uid})`);
+
   return (
     <span
       className={className}
