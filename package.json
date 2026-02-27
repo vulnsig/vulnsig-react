@@ -19,6 +19,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "test": "vitest run",
     "lint": "eslint src/",
     "prepublishOnly": "npm run build"
   },
@@ -39,9 +40,13 @@
     "vulnsig": "^1.0.0"
   },
   "devDependencies": {
+    "@testing-library/react": "^16",
     "@types/react": "^19",
+    "jsdom": "^26",
     "react": "^19",
+    "react-dom": "^19",
     "tsup": "^8",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4"
   }
 }
