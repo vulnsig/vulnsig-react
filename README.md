@@ -9,3 +9,7 @@ React component for VulnSig glyphs
 
 Update `vulnsig` to 1.1.0.
 
+### 1.2.0
+
+Update `vulnsig` to 1.2.0.
+
