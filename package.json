@@ -39,11 +39,7 @@
     "react": ">=17"
   },
   "dependencies": {
-<<<<<<< HEAD
     "vulnsig": "^2.0.0"
-=======
-    "vulnsig": "^1.3.0"
->>>>>>> 38596f4bb63bbb33412164a7dbd3fcb826cf0ba1
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
