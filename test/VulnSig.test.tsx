@@ -5,6 +5,8 @@ import { VulnSig } from '../src/index.js';
 const LOG4SHELL = 'CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H';
 const CVSS31_LOG4SHELL = 'CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H';
 const CVSS30_HEARTBLEED = 'CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N';
+const CVSS2_HEARTBLEED = 'AV:N/AC:L/Au:N/C:P/I:N/A:N';
+const CVSS2_PREFIXED_WORST = 'CVSS:2.0/AV:N/AC:L/Au:N/C:C/I:C/A:C';
 
 describe('VulnSig', () => {
   it('renders an SVG element', () => {
@@ -58,6 +60,16 @@ describe('VulnSig', () => {
 
   it('renders CVSS 3.0 vectors', () => {
     const { container } = render(<VulnSig vector={CVSS30_HEARTBLEED} />);
+    expect(container.querySelector('svg')).not.toBeNull();
+  });
+
+  it('renders bare CVSS 2.0 vectors', () => {
+    const { container } = render(<VulnSig vector={CVSS2_HEARTBLEED} />);
+    expect(container.querySelector('svg')).not.toBeNull();
+  });
+
+  it('renders prefixed CVSS 2.0 vectors', () => {
+    const { container } = render(<VulnSig vector={CVSS2_PREFIXED_WORST} />);
     expect(container.querySelector('svg')).not.toBeNull();
   });
 });

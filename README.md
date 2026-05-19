@@ -5,6 +5,10 @@ React component for VulnSig glyphs
 
 ## What is New in vulnsig-react
 
+### 2.0.0
+
+Update `vulnsig` to 2.0.0
+
 ### 1.1.0
 
 Update `vulnsig` to 1.1.0.
