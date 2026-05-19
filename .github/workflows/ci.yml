@@ -40,6 +40,12 @@ jobs:
           key: test-npm-${{ matrix.os.name }}-${{ matrix.node.version }}-${{ hashFiles('package-lock.json', '.github/workflows/ci.yml') }}
           restore-keys: test-npm-${{ matrix.os.name }}-${{ matrix.node.version }}-
 
+      # Work around npm/cli#4828: the lockfile only records the host platform's
+      # optional binary deps (e.g. @rollup/rollup-*), so resolve fresh per runner.
+      - name: Remove lockfile (workaround for npm optional-deps bug)
+        run: rm -f package-lock.json
+        shell: bash
+
       - run: npm install
 
       - run: npm test
@@ -69,6 +75,9 @@ jobs:
           key: checks-npm-${{ hashFiles('package-lock.json', '.github/workflows/ci.yml') }}
           restore-keys: checks-npm-
 
+      - name: Remove lockfile (workaround for npm optional-deps bug)
+        run: rm -f package-lock.json
+
       - run: npm install
 
       - run: ${{ matrix.checks.command }}
@@ -87,6 +96,9 @@ jobs:
         with:
           node-version: "22"
           registry-url: "https://registry.npmjs.org"
+
+      - name: Remove lockfile (workaround for npm optional-deps bug)
+        run: rm -f package-lock.json
 
       - run: npm install
       - run: npm run build
